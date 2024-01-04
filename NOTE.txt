@@ -7,3 +7,5 @@ apche/airflow
 
 https://hub.docker.com/r/apache/airflow
 
+services: winpty
+

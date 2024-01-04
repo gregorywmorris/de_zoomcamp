@@ -14,11 +14,11 @@ services:
     restart: always
 
 
-winpty docker run -it \
+docker run -it \
   -e POSTGRES_USER="root" \
   -e POSTGRES_PASSWORD="root" \
   -e POSTGRES_DB="ny_taxi" \
-  -v /d:/ds_projects/de_omcamp/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -v /d:/ds_projects/de_zoomcamp/ny_taxi_postgres_data:/var/lib/postgresql/data \
   -p 5432:5432 \
   postgres:13
 
