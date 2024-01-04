@@ -1,1 +1,9 @@
+POstgres and 
+https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_1_basics_n_setup/2_docker_sql/docker-compose.yaml
+
 Postgres login: pgcli -h localhost -p 5432 -u root -d ny_taxi
+
+apche/airflow
+
+https://hub.docker.com/r/apache/airflow
+
