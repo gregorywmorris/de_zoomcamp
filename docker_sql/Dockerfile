@@ -6,4 +6,4 @@ RUN pip install pandas sqlalchemy psycopg2
 WORKDIR /app
 COPY ingest-data.py ingest-data.py
 
-ENTRYPOINT [ "python","pipline.py" ]
+ENTRYPOINT [ "python","ingest-data.py" ]

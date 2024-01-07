@@ -18,9 +18,9 @@ def main(params):
     # the backup files are gzipped, and it's important to keep the correct extension
     # for pandas to be able to open the file
     if url.endswith('.csv.gz'):
-        csv_name = 'data/output.csv.gz'
+        csv_name = 'output.csv.gz'
     else:
-        csv_name = 'data/output.csv'
+        csv_name = 'output.csv'
 
     os.system(f"wget {url} -O {csv_name}")
 
