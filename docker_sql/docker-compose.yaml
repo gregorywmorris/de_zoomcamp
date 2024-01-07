@@ -1,7 +1,5 @@
-version: '3'
-
 services:
-  postgres:
+  pgdatabase:
     image: postgres:15-alpine
     container_name: postgres
     user: "0:0"
@@ -39,3 +37,4 @@ volumes:
     name: ingest_pgdata
   pg-admin:
     name: ingest_pgadmin
+

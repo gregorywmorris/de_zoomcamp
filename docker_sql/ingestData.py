@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import os
 import argparse
 from time import time
@@ -9,8 +12,8 @@ def main(params):
     """Import data to Postgres"""
     user = params.user
     password = params.password
-    host = params.host 
-    port = params.port 
+    host = params.host
+    port = params.port
     db = params.db
     table_name = params.table_name
     url = params.url
@@ -38,7 +41,7 @@ def main(params):
     df.to_sql(name=table_name, con=engine, if_exists='append')
 
 
-    while True: 
+    while True:
 
         try:
             t_start = time()
