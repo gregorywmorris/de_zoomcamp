@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   postgres:
     image: postgres:15-alpine
@@ -22,7 +24,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=blackitalian@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=root
     volumes:
-      - "pg-admin:/var/lib/pgadmin/sessions"
+      - "pg-admin:/var/lib/pgadmin"
     ports:
       - "8080:80"
     networks:
@@ -37,4 +39,3 @@ volumes:
     name: ingest_pgdata
   pg-admin:
     name: ingest_pgadmin
-
