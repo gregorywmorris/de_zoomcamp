@@ -1,14 +1,13 @@
 services:
-  pgdatabase:
+  postgres:
     image: postgres:15-alpine
     container_name: postgres
-    user: "0:0"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=ny_taxi
     volumes:
-      - "pg-data:/var/lib/postgresql/data"
+      - "pg-data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
     networks:
@@ -20,9 +19,9 @@ services:
     user: "${UID}:${GID}"
     environment:
       - PGADMIN_DEFAULT_EMAIL=blackitalian@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=root
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin
     volumes:
-      - "pg-admin:/var/lib/pgadmin"
+      - "pg-admin:/var/lib/pgadmin/sessions"
     ports:
       - "8080:80"
     networks:
