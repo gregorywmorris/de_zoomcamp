@@ -27,3 +27,8 @@ resource "google_storage_bucket" "terra-bucket" {
     }
   }
 }
+
+
+resource "google_bigquery_dataset" "demo-dataset" {
+  dataset_id = "example_dataset"
+}
