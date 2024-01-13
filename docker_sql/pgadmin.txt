@@ -1,0 +1,15 @@
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    user: $UID:$GUID
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=blackitalian@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin
+    volumes:
+      - pg-admin:/var/lib/pgadmin/sessions
+    VolumePermissions:
+      enabled: true
+    ports:
+      - 8080:80
+    networks:
+      - pg-network

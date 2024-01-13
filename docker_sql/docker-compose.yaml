@@ -13,19 +13,42 @@ services:
     networks:
       - pg-network
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    user: "${UID}:${GID}"
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=blackitalian@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=pgadmin
-    volumes:
-      - "pg-admin:/var/lib/pgadmin/sessions"
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: dbeaver
+    restart: on-failure:5
     ports:
-      - "8080:80"
+      - "8978:8978"
+    volumes: 
+      - "cloudbeaver:/opt/cloudbeaver/workspace"
     networks:
       - pg-network
+
+  magic:
+    image: mageai/mageai:latest
+    container_name: mageai
+    command: mage start ${PROJECT_NAME}
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      USER_CODE_PATH: mage:/home/src/${PROJECT_NAME}
+      POSTGRES_DBNAME: ${POSTGRES_DBNAME}
+      POSTGRES_SCHEMA: ${POSTGRES_SCHEMA}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    ports:
+      - 6789:6789
+    volumes:
+      - mage:/home/src/
+      - mage:/Documents/secrets/personal-gcp.json:/home/src/personal-gcp.json
+    networks:
+      - pg-network
+    restart: on-failure:5
 
 networks:
   pg-network:
@@ -34,6 +57,9 @@ networks:
 volumes:
   pg-data: 
     name: ingest_pgdata
-  pg-admin:
-    name: ingest_pgadmin
+  cloudbeaver:
+    name: cloudbeaver
+  mage:
+    name: mage
+
 
