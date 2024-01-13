@@ -8,15 +8,16 @@ terraform {
 }
 
 provider "google" {
-  credentials = "./keys/gcp-creds.json"
-  project     = "elaborate-art-318223"
-  region      = "us-central1"
+  credentials = file(var.credentials)
+  project     = var.project
+  region      = var.region
 }
 
 resource "google_storage_bucket" "terra-bucket" {
-  name          = "elaborate-art-318223-terra-bucket"
-  location      = "US"
+  name          = var.gcs_bucket_name
+  location      = var.location
   force_destroy = true
+  storage_class = var.gcs_storage_clas
 
   lifecycle_rule {
     condition {
@@ -31,4 +32,5 @@ resource "google_storage_bucket" "terra-bucket" {
 
 resource "google_bigquery_dataset" "demo-dataset" {
   dataset_id = "example_dataset"
+  location   = var.location
 }
