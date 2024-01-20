@@ -3,6 +3,7 @@ data/
 volumes/
 secret/
 keys/
+*.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
