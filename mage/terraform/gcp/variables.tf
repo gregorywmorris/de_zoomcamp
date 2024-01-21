@@ -16,20 +16,20 @@ variable "container_memory" {
 
 variable "project_id" {
   type        = string
-  description = "The name of the project"
-  default     = "unique-gcp-project-id"
+  description = "My First Project"
+  default     = "elaborate-art-318223"
 }
 
 variable "region" {
   type        = string
   description = "The default compute region"
-  default     = "us-west2"
+  default     = "us-east1"
 }
 
 variable "zone" {
   type        = string
   description = "The default compute zone"
-  default     = "us-west2-a"
+  default     = "us-east1-b"
 }
 
 variable "repository" {
@@ -48,6 +48,7 @@ variable "database_password" {
   type        = string
   description = "The password of the Postgres database."
   sensitive   = true
+  default     = "postgres"
 }
 
 variable "docker_image" {
