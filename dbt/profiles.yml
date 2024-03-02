@@ -24,7 +24,7 @@ bg-de-zoomcamp:
       job_execution_timeout_seconds: 300
       job_retries: 1
 
-dbt_postgres_analytics:
+pg-de-zoomcamp:
   target: dev
   outputs:
     dev:
@@ -47,7 +47,7 @@ dbt_postgres_analytics:
       pass:   "{{ env_var('DBT_POSTGRES_PASSWORD') }}"
       threads: 4
 
-dbt_redshift_analytics:
+rs-de-zoomcamps:
   target: dev
   outputs:
     dev:
