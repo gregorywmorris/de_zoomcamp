@@ -36,7 +36,7 @@ services:
       - spark-network
 
   spark-history-server:
-    image: rangareddy1988/spark-history-server:${VERSION:-latest}
+    image: docker.io/lightbend/spark-history-server:latest
     container_name: spark-history-server
     environment:
       - SPARK_HISTORY_UI_PORT=18080

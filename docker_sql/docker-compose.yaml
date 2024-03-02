@@ -11,18 +11,18 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - pg-network
+      - my-network
 
   cloudbeaver:
     image: dbeaver/cloudbeaver:latest
     container_name: dbeaver
     restart: on-failure:5
     ports:
-      - "8978:8978"
+      - 8978:8978
     volumes: 
-      - "cloudbeaver:/opt/cloudbeaver/workspace"
+      - cloudbeaver:/opt/cloudbeaver/workspace
     networks:
-      - pg-network
+      - my-network
 
   magic:
     image: mageai/mageai:latest
@@ -47,12 +47,12 @@ services:
       - mage:/home/src/
       - mage:/Documents/secrets/personal-gcp.json:/home/src/personal-gcp.json
     networks:
-      - pg-network
+      - my-network
     restart: on-failure:5
 
 networks:
-  pg-network:
-    name: pg-network
+  my-network:
+    name: my-network
 
 volumes:
   pg-data: 
