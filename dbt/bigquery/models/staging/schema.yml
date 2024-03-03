@@ -1,0 +1,6 @@
+sources:
+  - name: raw_nyc_tlc_record_data
+    database: "{{ env_var('DBT_BIGQUERY_PROJECT') }}"
+    schema:   "{{ env_var('DBT_BIGQUERY_TARGET_DATASET') }}"
+    tables:
+      - name: yellow_cab_data
