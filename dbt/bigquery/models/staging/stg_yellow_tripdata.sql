@@ -8,7 +8,7 @@ with yellow_cab_data as (
         row_number() over(partition by VendorID, tpep_pickup_datetime) as row_num,
         yt.*
     from
-        {{ source('raw_nyc_tlc_record_data', 'ext_yellow_taxi') }} yt
+        {{ source('raw_nyc_tlc_record_data', 'yellow_cab_data') }} yt
     where
         VendorID is not null        
 )
