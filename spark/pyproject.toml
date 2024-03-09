@@ -8,6 +8,7 @@ authors = [
 dependencies = [
     "pyspark>=3.5.1",
     "pypandoc>=1.13",
+    "pandas>=2.2.1",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
@@ -16,3 +17,8 @@ license = {text = "NONE"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "jupyter>=1.0.0",
+]
