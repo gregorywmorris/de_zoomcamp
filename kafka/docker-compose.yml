@@ -1,7 +1,8 @@
-version: "2"
+version: "3"
+
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:6.2.0
+    image: confluentinc/cp-zookeeper:7.6.0
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -9,8 +10,13 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - kafka
+    volumes:
+      - zookeeper:/data
+
   kafka:
-    image: confluentinc/cp-kafka:6.2.0
+    image: confluentinc/cp-kafka:7.6.0
     hostname: broker
     container_name: broker
     depends_on:
@@ -30,8 +36,13 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
+      networks:
+        - kafka
+      volumes:
+        - kafka1:/var/lib/kafka/data
+
   kafdrop:
-    image: obsidiandynamics/kafdrop
+    image: obsidiandynamics/kafdrop:4.0.0
     restart: "no"
     ports:
       - 9007:9000
@@ -40,3 +51,17 @@ services:
       JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
     depends_on:
       - kafka
+    networks:
+      - kafka
+
+networks:
+    kafka:
+      name: kafka
+
+volumes:
+  zookeeper:
+    name:
+      - zookeeper
+  kafka1:
+    name:
+      - kafka1
