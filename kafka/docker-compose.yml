@@ -36,10 +36,10 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
-      networks:
-        - kafka
-      volumes:
-        - kafka1:/var/lib/kafka/data
+    networks:
+      - kafka
+    volumes:
+      - kafka:/var/lib/kafka/data
 
   kafdrop:
     image: obsidiandynamics/kafdrop:4.0.0
@@ -60,8 +60,4 @@ networks:
 
 volumes:
   zookeeper:
-    name:
-      - zookeeper
-  kafka1:
-    name:
-      - kafka1
+  kafka:
